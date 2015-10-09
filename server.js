@@ -14,7 +14,6 @@ var port = process.env.PORT || 8080;
 // DB setup
 var sequelize = new Sequelize('node_api', 'root', 'toor', {
   host: 'localhost',
-  dialect: 'mariadb',
   define: {
     timestamps: false
   }
