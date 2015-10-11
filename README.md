@@ -9,6 +9,7 @@
 
 ## To Do and more
 
-* There is only one table. Relations between others should be done with sequelize in the ./models/index.js.
-* Instead of listing models manually, it would be better to get all files in the models/ directory (excluding index.js, naturally)
-
+* Routes should be listed in a dedicated route directory so it doesn't get really quickly messy.
+* Instead of listing models manually, it would be better to get all files in the models/ directory (excluding index.js, naturally).
+* There is only one table posts. Relations between others should be done with sequelize in the ./models/index.js.
+* Better error handling should be done (in particulary reagarding empty sequelize query).
