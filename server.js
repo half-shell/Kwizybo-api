@@ -59,9 +59,19 @@ router.route('/posts')
   .get(function(req, res) {
     Post.findAll().then(function (err, post) {
       if(err)
-        res.send(err)
+        res.send(err);
 
-      res.send(post)
+      res.send(post);
+    });
+  });
+
+router.route('/posts/:post_id')
+  .get(function(req, res) {
+    Post.findById(req.params.post_id).then(function (err, post) {
+      if(err)
+        res.send(err);
+
+      res.send(post);
     });
   });
 
