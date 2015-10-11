@@ -31,6 +31,7 @@ var models = require('./models');
 
 // Getting a model is that simple
 var Post = models.Post;
+// var Comment = models.Comment;
 
 // Basic routing
 var router = express.Router();
@@ -45,14 +46,25 @@ router.get('/', function(req, res) {
 });
 
 router.route('/posts')
-  .get(function(req, res) {
-    Post.findAll().then(function (err, posts) {
-      if (err)
+  .post(function(req, res) {
+    var post = Post.build( {
+      title: req.body.title,
+      content: req.body.content
+    });
+    post.save().catch(function (err) {
         res.send(err);
+    });
+    res.send({ message: 'The post has been succesfully added' });
+  })
+  .get(function(req, res) {
+    Post.findAll().then(function (err, post) {
+      if(err)
+        res.send(err)
 
-      res.send(posts);
+      res.send(post)
     });
   });
+
 
 
 // Registering routes
