@@ -73,9 +73,21 @@ router.route('/posts/:post_id')
 
       res.send(post);
     });
+  })
+  .put(function(req, res) {
+    Post.findById(req.params.post_id).then(function (post, err) {
+      if(err)
+        res.send(err);
+
+      post.update({
+        title: req.body.title,
+        content: req.body.content
+      }).catch(function(err) {
+        res.send(err);
+      });
+      res.send({ message: 'Post has been succesfully updated' });
+    });
   });
-
-
 
 // Registering routes
 app.use('/api', router);
